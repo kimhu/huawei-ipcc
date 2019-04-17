@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.eiisys</groupId>
+		<artifactId>cloud_ipcc</artifactId>
+		<version>${cloud.ipcc.version}</version>
+	</parent>
+
+	<artifactId>cloud_ipcc_service</artifactId>
+	<name>cloud_ipcc_service</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.eiisys</groupId>
+			<artifactId>cloud_ipcc_dao</artifactId>
+			<version>${cloud.ipcc.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.eiisys</groupId>
+			<artifactId>cloud_ipcc_api</artifactId>
+			<version>${cloud.ipcc.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.eiisys</groupId>
+			<artifactId>cloud_ipcc_bean</artifactId>
+			<version>${cloud.ipcc.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.eiisys</groupId>
+			<artifactId>cloud_ipcc_redis</artifactId>
+			<version>${cloud.ipcc.version}</version>
+		</dependency>
+	</dependencies>
+</project>

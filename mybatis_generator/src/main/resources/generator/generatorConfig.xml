@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <properties resource="database.properties"/>
+  <context id="mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    <property name="beginningDelimiter" value="`"/>
+    <property name="endingDelimiter" value="`"/>
+    <property name="javaFileEncoding" value="UTF-8"/>
+    <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+      <property name="mappers" value="com.eiisys.core.mapper.BaseMapper"/>
+    </plugin>
+    <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+    <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
+                    connectionURL="${spring.datasource.url}"
+                    userId="${spring.datasource.username}"
+                    password="${spring.datasource.password}">
+    </jdbcConnection>
+
+    <javaModelGenerator targetPackage="com.eiisys.ipcc.entity" targetProject="D:\callcenter-ipcc\cloud_ipcc\cloud_ipcc_bean\src\main\java\"/>
+
+    <sqlMapGenerator targetPackage="sqlmap"  targetProject="D:\callcenter-ipcc\cloud_ipcc\cloud_ipcc_dao\src\main\resources"/>
+
+    <javaClientGenerator targetPackage="com.eiisys.ipcc.mapper" targetProject="D:\callcenter-ipcc\cloud_ipcc\cloud_ipcc_dao\src\main\java\" type="XMLMAPPER" />
+
+    <!-- demo表 begin-->
+    <!-- <table tableName="ipcc_demo">
+        <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>  -->
+    <!-- demo表 end -->
+    
+    <table tableName="ipcc_user" domainObjectName="User">
+        <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>  
+    
+    <table tableName="ipcc_company" domainObjectName="Company">
+        <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="ipcc_company_config" domainObjectName="CompanyConfig">
+        <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+  </context>
+</generatorConfiguration>

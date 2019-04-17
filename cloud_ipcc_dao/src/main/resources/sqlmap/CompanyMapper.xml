@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eiisys.ipcc.mapper.CompanyMapper">
+  <resultMap id="BaseResultMap" type="com.eiisys.ipcc.entity.Company">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="corp_id" jdbcType="VARCHAR" property="corpId" />
+    <result column="switchboard_number" jdbcType="VARCHAR" property="switchboardNumber" />
+    <result column="is_sms" jdbcType="TINYINT" property="isSms" />
+    <result column="available" jdbcType="TINYINT" property="available" />
+    <result column="sms_switch" jdbcType="TINYINT" property="smsSwitch" />
+    <result column="expiration_time" jdbcType="TIMESTAMP" property="expirationTime" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+  </resultMap>
+</mapper>
