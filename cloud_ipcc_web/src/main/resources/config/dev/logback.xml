@@ -18,8 +18,17 @@
         /logs：就是tomcat下的日志路径，
         /ehrlog：如果没有目录会默认创建
     -->
-    <substitutionProperty name="logbase" value="/var/log/53kf/ipcc" />
-    <substitutionProperty name="servicelogbase" value="/var/log/53kf/ipcc/caas" />
+    <!-- 联络中心整体日志路径 -->
+    <substitutionProperty name="logbase" value="/var/log/53kf/ipcc/" />
+    <!-- 调用华为接口日志路径 -->
+    <substitutionProperty name="paaslogbase" value="/var/log/53kf/ipcc/paas/" />
+    <!-- 调用saas接口日志路径 -->
+    <substitutionProperty name="saaslogbase" value="/var/log/53kf/ipcc/saas/" />
+    <!-- 客户系统推送日志路径 -->
+    <substitutionProperty name="kflogbase" value="/var/log/53kf/ipcc/kf/" />
+    <!-- 处理华为通话记录及录音日志路径 -->
+    <substitutionProperty name="recordlogbase" value="/var/log/53kf/ipcc/record/" />
+    
     <!-- 时间戳：
             这个时间戳可以作为每日日志的名称 -->
     <timestamp key="byDate" datePattern="yyyy-MM-dd"/>
@@ -60,8 +69,59 @@
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
         </encoder>
         <append>false</append>
-        
-
+    </appender>
+    
+    
+    <appender name="PAAS-FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${paaslogbase}paas.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${paaslogbase}paas.%d{yyyy-MM-dd}.log.zip</FileNamePattern>
+        </rollingPolicy>
+        <!-- 布局 -->
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+        <append>false</append>
+    </appender>
+    
+    <appender name="SAAS-FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${saaslogbase}saas.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${saaslogbase}saas.%d{yyyy-MM-dd}.log.zip</FileNamePattern>
+        </rollingPolicy>
+        <!-- 布局 -->
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+        <append>false</append>
+    </appender>
+    
+    <appender name="KF-FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${kflogbase}kf.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${kflogbase}kf.%d{yyyy-MM-dd}.log.zip</FileNamePattern>
+        </rollingPolicy>
+        <!-- 布局 -->
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+        <append>false</append>
+    </appender>
+    
+    <appender name="RECORD-FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${recordlogbase}record.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${recordlogbase}record.%d{yyyy-MM-dd}.log.zip</FileNamePattern>
+        </rollingPolicy>
+        <!-- 布局 -->
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+        <append>false</append>
     </appender>
     
     
@@ -70,8 +130,36 @@
         level：日志级别
         appender-ref：确定使用哪个appender
          -->
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="logFile"/>
         <appender-ref ref="STDOUT"/>
     </root>
+    
+    <!-- 华为接口日志文件 -->  
+    <logger name="com.eiisys.ipcc.paas" additivity="false">  
+        <level value="debug" />  
+        <appender-ref ref="STDOUT" />   
+        <appender-ref ref="PAAS-FILE" />
+    </logger> 
+    
+    <!-- saas接口日志文件 -->  
+    <logger name="com.eiisys.ipcc.saas" additivity="false">  
+        <level value="debug" />  
+        <appender-ref ref="STDOUT" />   
+        <appender-ref ref="SAAS-FILE" />
+    </logger> 
+    
+    <!-- 客服系统推送日志文件 -->  
+    <logger name="com.eiisys.ipcc.kf" additivity="false">  
+        <level value="debug" />  
+        <appender-ref ref="STDOUT" />   
+        <appender-ref ref="KF-FILE" />
+    </logger> 
+    
+    <!-- 华为话单及录音日志文件 -->  
+    <logger name="com.eiisys.ipcc.record" additivity="false">  
+        <level value="info" />  
+        <appender-ref ref="STDOUT" />   
+        <appender-ref ref="RECORD-FILE" />
+    </logger> 
 </configuration>
