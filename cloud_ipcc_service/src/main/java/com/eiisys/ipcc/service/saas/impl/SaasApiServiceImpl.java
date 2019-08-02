@@ -1,4 +1,4 @@
-package com.eiisys.ipcc.saas.service.impl;
+package com.eiisys.ipcc.service.saas.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.eiisys.ipcc.core.utils.OkhttpClientUtils;
-import com.eiisys.ipcc.saas.service.SaasApiService;
+import com.eiisys.ipcc.service.saas.SaasApiService;
 
 import lombok.extern.slf4j.Slf4j;
 

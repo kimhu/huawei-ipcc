@@ -1,4 +1,4 @@
-package com.eiisys.ipcc.saas.service;
+package com.eiisys.ipcc.service.saas;
 
 /**
  * saas api接口
